@@ -1,0 +1,123 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="py-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Hi, I'm Dominik</h1>
+        <p class="lead mt-3">
+            Python Developer • Django • Pygame • matplotlib / plotly.express
+        </p>
+        <a href="{% url 'projects:all_projects' %}" class="btn btn-primary btn-lg mt-3">
+            View My Projects
+        </a>
+    </div>
+</section>
+
+<hr>
+
+<!-- FEATURES SECTION -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center g-4">
+
+            <div class="col-md-4">
+                <div class="p-4 border rounded shadow-sm h-100">
+                    <h3 class="fw-bold">Python Development</h3>
+                    <p>
+                        Building clean, efficient applications using Django, APIs, and automation tools.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="p-4 border rounded shadow-sm h-100">
+                    <h3 class="fw-bold">Game Development</h3>
+                    <p>
+                        Creating polished Pygame projects like Alien Invasion and custom tools.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="p-4 border rounded shadow-sm h-100">
+                    <h3 class="fw-bold">Data Visualization</h3>
+                    <p>
+                        Generating and exploring data using <strong>matplotlib</strong> and <strong>plotly.express</strong>
+                        to create clear, insightful visualizations.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<hr>
+
+<!-- PROJECTS PREVIEW (CAROUSEL) -->
+<div id="projectsCarousel" 
+     class="carousel slide" 
+     data-bs-ride="carousel" 
+     data-bs-interval="3500" 
+     data-bs-wrap="true">  
+     
+
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+        {% for project in projects|slice:":5" %}
+            <button type="button"
+                    data-bs-target="#projectsCarousel"
+                    data-bs-slide-to="{{ forloop.counter0 }}"
+                    {% if forloop.first %}class="active" aria-current="true"{% endif %}
+                    aria-label="Slide {{ forloop.counter }}">
+            </button>
+        {% endfor %}
+    </div>
+
+    <!-- Slides -->
+    <div class="carousel-inner">
+        {% for project in projects|slice:":5" %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                
+                <!-- Centered, smaller, popping image -->
+                <div class="d-flex justify-content-center py-4">
+                    <img src="{% static project.image %}"
+                         alt="{{ project.title }}"
+                         class="img-fluid rounded-3 shadow-lg"
+                         style="max-height: 320px; max-width: 70%; object-fit: cover;">
+                </div>
+
+                <!-- Caption block -->
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="bg-dark bg-opacity-50 rounded-3 px-3 py-2 d-inline-block">
+                        <h5 class="mb-1">{{ project.title }}</h5>
+                        <a href="{% url 'projects:project_detail' project.id %}"
+                           class="btn btn-primary btn-sm">
+                            View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- LOWER CONTROLS -->
+    <button class="carousel-control-prev" type="button"
+            data-bs-target="#projectsCarousel" data-bs-slide="prev"
+            style="transform: translateY(40px);">  <!-- moves arrow down -->
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button"
+            data-bs-target="#projectsCarousel" data-bs-slide="next"
+            style="transform: translateY(40px);">  <!-- moves arrow down -->
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+{% endblock content %}

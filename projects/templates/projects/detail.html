@@ -1,0 +1,89 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+
+  <!-- Title -->
+  <div class="row mb-4">
+    <div class="col text-center">
+      <h1 class="display-4 fw-bold">{{ project.title }}</h1>
+    </div>
+  </div>
+
+  <div class="row justify-content-center align-items-start g-4">
+
+    <!-- Images column (carousel) -->
+<div class="col-12 col-md-5">
+
+  {% if project.images.all %}
+    <div id="detailImagesCarousel"
+         class="carousel slide"
+         data-bs-ride="carousel"
+         data-bs-interval="4000"
+         data-bs-wrap="true">
+
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        {% for img in project.images.all %}
+          <button type="button"
+                  data-bs-target="#detailImagesCarousel"
+                  data-bs-slide-to="{{ forloop.counter0 }}"
+                  class="{% if forloop.first %}active{% endif %}"
+                  {% if forloop.first %}aria-current="true"{% endif %}
+                  aria-label="Slide {{ forloop.counter }}">
+          </button>
+        {% endfor %}
+      </div>
+
+      <!-- Slides -->
+      <div class="carousel-inner">
+        {% for img in project.images.all %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="d-flex justify-content-center py-3">
+              <img src="{{ img.image.url }}"
+                   class="img-fluid rounded-3 shadow-lg"
+                   alt="{{ project.title }}"
+                   style="max-height: 520px; object-fit: cover;">
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Controls (lowered a bit) -->
+      <button class="carousel-control-prev" type="button"
+              data-bs-target="#detailImagesCarousel" data-bs-slide="prev"
+              style="top: 92%; transform: translateY(-50%); width: 3rem;">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button class="carousel-control-next" type="button"
+              data-bs-target="#detailImagesCarousel" data-bs-slide="next"
+              style="top: 92%; transform: translateY(-50%); width: 3rem;">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+
+    </div>
+  {% else %}
+    <p class="text-muted">No images added yet.</p>
+  {% endif %}
+
+</div>
+
+    <!-- Description column -->
+    <div class="col-12 col-md-5 offset-md-1">
+      <p class="lead mb-4">{{ project.description }}</p>
+
+      {% if project.technology %}
+        <p class="text-muted mb-0">
+          <strong>Technologies:</strong><br>
+          {{ project.technology }}
+        </p>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+{% endblock content %}

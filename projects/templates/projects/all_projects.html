@@ -1,0 +1,67 @@
+{% extends 'projects/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="py-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div>
+      <h1 class="fw-bold mb-1">Projects</h1>
+      <p class="text-muted mb-0">
+        A selection of things I’ve built with Python and Django. Click on a project you want to learn more about.
+      </p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    {% for project in projects %}
+      <div class="col-12 col-md-6 col-lg-4">
+
+        <div class="card h-100 border-0 shadow-sm project-card position-relative">
+
+          <!-- Project image -->
+          <div class="ratio ratio-16x9">
+            <img src="{% static project.image %}"
+                 class="card-img-top rounded-top"
+                 alt="{{ project.title }}"
+                 style="object-fit: cover;">
+          </div>
+
+          <!-- Card content -->
+          <div class="card-body p-4">
+            <h5 class="card-title fw-bold mb-2">
+              {{ project.title }}
+            </h5>
+
+            <p class="card-text text-muted mb-3">
+              {{ project.description|truncatewords:25 }}
+            </p>
+
+            <!-- Invisible stretched link (makes whole card clickable) -->
+            <a href="{% url 'projects:project_detail' project.pk %}"
+               class="stretched-link"
+               aria-label="Open project {{ project.title }}">
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Hover polish -->
+<style>
+  .project-card {
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.12) !important;
+  }
+</style>
+
+{% endblock content %}
