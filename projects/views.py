@@ -30,3 +30,8 @@ def certificates(request):
     resume_item = ResumeItem.objects.filter(category="Certificate").order_by("-end_date", "title")
     context = {'resume_items': resume_item}
     return render(request, 'projects/certificates.html', context)
+
+def about_me(request):
+    resume_item = ResumeItem.objects.all()
+    context = {'resume_item': resume_item}
+    return render(request, 'projects/about_me.html', context)

@@ -12,6 +12,7 @@ urlpatterns = [
     path('<int:pk>/', views.project_detail, name='project_detail'),
     path('resume/', views.resume, name='resume'),
     path('certificates/', views.certificates, name='certificates'),
+    path('about_me/', views.about_me, name='about_me'),
 ]
 
 if settings.DEBUG:

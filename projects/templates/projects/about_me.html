@@ -1,0 +1,172 @@
+{% extends "projects/base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="text-center mb-5">
+      <h1 class="display-5 fw-bold mb-2">About Me</h1>
+      <p class="text-muted mb-0">A quick look at who I am and how I work.</p>
+    </div>
+
+    <div class="row g-4 align-items-stretch mb-5">
+      <!-- Bio card -->
+      <div class="col-12 col-lg-5">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="avatar-circle fw-bold text-uppercase">DI</div>
+              <div>
+                <h2 class="h4 fw-bold mb-1">Dominik Ivacic</h2>
+                <div class="text-muted">Python Developer • Django</div>
+              </div>
+            </div>
+            <p class="mb-0 text-muted">
+              I build clean, practical Python applications with a focus on Django,
+              data visualization, and user-friendly tooling. I enjoy turning ideas
+              into useful products and polishing the details that make software feel great.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Highlights -->
+      <div class="col-12 col-lg-7">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <h3 class="h5 fw-bold mb-3">Quick Highlights</h3>
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <div class="p-3 border rounded h-100">
+                  <div class="fw-bold mb-1">Focus</div>
+                  <div class="text-muted">Backend development, automation, and APIs.</div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="p-3 border rounded h-100">
+                  <div class="fw-bold mb-1">Tooling</div>
+                  <div class="text-muted">Django, SQLite/Postgres, REST, and testing.</div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="p-3 border rounded h-100">
+                  <div class="fw-bold mb-1">Data</div>
+                  <div class="text-muted">matplotlib and plotly for clear visuals.</div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="p-3 border rounded h-100">
+                  <div class="fw-bold mb-1">Games</div>
+                  <div class="text-muted">Pygame projects and interactive tools.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Focus Areas -->
+    <div class="row g-4 mb-5">
+      <div class="col-12 col-md-4">
+        <div class="card border-0 shadow-sm h-100 about-card">
+          <div class="card-body p-4">
+            <h3 class="h5 fw-bold mb-2">Web Apps</h3>
+            <p class="text-muted mb-0">
+              Building Django apps with clear UX, solid models, and reusable views.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card border-0 shadow-sm h-100 about-card">
+          <div class="card-body p-4">
+            <h3 class="h5 fw-bold mb-2">Automation</h3>
+            <p class="text-muted mb-0">
+              Scripting workflows to save time, reduce errors, and keep systems tidy.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card border-0 shadow-sm h-100 about-card">
+          <div class="card-body p-4">
+            <h3 class="h5 fw-bold mb-2">Data Insight</h3>
+            <p class="text-muted mb-0">
+              Turning raw data into compelling charts and dashboards.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="row g-4">
+      <div class="col-12 col-lg-7">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <h3 class="h5 fw-bold mb-3">My Working Style</h3>
+            <div class="list-group list-group-flush">
+              <div class="list-group-item px-0">
+                <div class="fw-bold">Plan & Build</div>
+                <div class="text-muted">Sketch the solution, iterate fast, and keep scope tight.</div>
+              </div>
+              <div class="list-group-item px-0">
+                <div class="fw-bold">Polish the UX</div>
+                <div class="text-muted">Small touches make interfaces feel effortless.</div>
+              </div>
+              <div class="list-group-item px-0">
+                <div class="fw-bold">Ship & Learn</div>
+                <div class="text-muted">Deliver, observe, and improve with real feedback.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-5">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <h3 class="h5 fw-bold mb-3">Beyond Code</h3>
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-2">Clear communication and steady progress.</li>
+              <li class="mb-2">Focused learning and continuous improvement.</li>
+              <li>Building projects that are both useful and enjoyable.</li>
+            </ul>
+            <div class="d-flex gap-2 mt-4">
+              <a href="{% url 'projects:all_projects' %}" class="btn btn-primary">View Projects</a>
+              <a href="{% url 'projects:resume' %}" class="btn btn-outline-secondary">Resume</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .avatar-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f2f4f7;
+    color: #1f2a37;
+    letter-spacing: 1px;
+  }
+
+  .about-card {
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .about-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.10) !important;
+  }
+</style>
+{% endblock content %}
