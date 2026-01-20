@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Project, ProjectImage, ResumeItem
+from django.db.models import F
 
 # Create your views here.
 def all_projects(request):
@@ -21,8 +21,9 @@ def index(request):
     return render(request, 'projects/index.html', context)
 
 def resume(request):
-    resume_items = ResumeItem.objects.order_by("category", "-start_date", 
-                                               "-end_date", "title").exclude(category="Certificate")
+    resume_items = ResumeItem.objects.exclude(
+        title=F("category"), category="Certificate").order_by("category", "-start_date", 
+                                               "-end_date", "title")
     context = {'resume_items': resume_items}
     return render(request, 'projects/resume.html', context)
 

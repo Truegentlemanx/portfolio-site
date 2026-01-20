@@ -7,8 +7,18 @@
 
     <!-- Header -->
     <div class="text-center mb-5">
-      <h1 clapythonss="display-5 fw-bold mb-2">Resume</h1>
+      <h1 class="display-5 fw-bold mb-2">Resume</h1>
       <p class="text-muted mb-0">Work experience.</p>
+    </div>
+
+    <!-- Introduction -->
+    <div class="d-flex align-items-center mb-3 row justify-content-center">
+      Motivated and reliable with a background in economics, administration, 
+      and production, currently transitioning into software development with a 
+      focus on Python. Experienced in structured work environments, process 
+      optimization, and digital tools. Strong work ethic developed through 
+      production work in Germany, combined with continuous self-learning in 
+      foreign languages, programming and technology.
     </div>
 
     {% regroup resume_items by category as grouped %}
@@ -21,7 +31,7 @@
 
             <!-- Category title -->
             <div class="d-flex align-items-center gap-3 mb-3">
-              <h2 class="h4 fw-bold mb-0">{{ group.grouper }}</h2>
+              <h3 class="h4 fw-bold mb-0">{{ group.grouper }}</h3>
               <div class="flex-grow-1 border-top"></div>
             </div>
 

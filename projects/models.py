@@ -26,8 +26,8 @@ class ProjectImage(models.Model):
     
 class ResumeItem(models.Model):
     """Class representing resume items like education and employers"""
-    category = models.CharField(max_length=100)
-    title = models.CharField(max_length=100)
+    category = models.CharField(max_length=100, null=True, blank=True)
+    title = models.CharField(max_length=100, null=True, blank=True)
     description = models.TextField()
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
