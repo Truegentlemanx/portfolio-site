@@ -12,13 +12,20 @@
     </div>
 
     <!-- Introduction -->
-    <div class="d-flex align-items-center mb-3 row justify-content-center">
-      Motivated and reliable with a background in economics, administration, 
-      and production, currently transitioning into software development with a 
-      focus on Python. Experienced in structured work environments, process 
-      optimization, and digital tools. Strong work ethic developed through 
-      production work in Germany, combined with continuous self-learning in 
-      foreign languages, programming and technology.
+    <div class="row justify-content-center mb-3">
+      <div class="col-12 col-lg-9">
+        <div class="card border-0 shadow-sm resume-card">
+          <div class="card-body p-4">
+                Motivated and reliable with a background in economics, 
+                administration, and production, currently transitioning 
+                into software development with a focus on Python. Experienced 
+                in structured work environments, process optimization, and 
+                digital tools. Strong work ethic developed through production 
+                work in Germany, combined with continuous self-learning in 
+                foreign languages, programming and technology.
+          </div>
+        </div>
+      </div>
     </div>
 
     {% regroup resume_items by category as grouped %}
@@ -52,15 +59,16 @@
 
                     <!-- Title + date -->
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
+                      {% if item.title %}
                       <h3 class="h5 fw-bold mb-0">{{ item.title }}</h3>
+                      {% endif %}
 
-                      <span class="badge text-bg-light border align-self-md-start">
+                      
                         {% if item.start_date and item.end_date %}
+                        <span class="badge text-bg-light border align-self-md-start">
                           {{ item.start_date|date:"d.m.Y" }} – {{ item.end_date|date:"d.m.Y" }}
                         {% elif item.start_date %}
                           {{ item.start_date|date:"F Y" }}
-                        {% else %}
-                          —
                         {% endif %}
                       </span>
                     </div>

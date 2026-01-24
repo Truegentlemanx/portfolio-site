@@ -21,8 +21,7 @@ def index(request):
     return render(request, 'projects/index.html', context)
 
 def resume(request):
-    resume_items = ResumeItem.objects.exclude(
-        title=F("category"), category="Certificate").order_by("category", "-start_date", 
+    resume_items = ResumeItem.objects.exclude(category="Certificate").order_by("category", "-start_date", 
                                                "-end_date", "title")
     context = {'resume_items': resume_items}
     return render(request, 'projects/resume.html', context)
