@@ -14,8 +14,15 @@
     <div class="row justify-content-center">
       <div class="col-12 col-lg-9">
 
+        <!-- =========================
+             Programming certificates
+        ========================== -->
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h2 class="h4 fw-bold mb-0">Programming certificates</h2>
+        </div>
+
         <div class="vstack gap-4">
-          {% for item in resume_items %}
+          {% for item in programming_certs %}
             <div class="card border-0 shadow-sm cert-card">
               <div class="card-body p-4">
 
@@ -37,13 +44,13 @@
 
                 <!-- Title + date -->
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2 mt-4">
-                  <h2 class="h4 fw-bold mb-0">{{ item.title }}</h2>
+                  <h3 class="h5 fw-bold mb-0">{{ item.title }}</h3>
 
                   <span class="badge text-bg-light border align-self-md-start">
                     {% if item.start_date and item.end_date %}
-                      {{ item.start_date|date:"d.m.Y" }} – {{ item.end_date|date:"d.m.Y" }}
+                      {{ item.start_date|date:"d.m.Y" }} - {{ item.end_date|date:"d.m.Y" }}
                     {% elif item.start_date %}
-                      {{ item.start_date|date:"F Y" }}
+                      {{ item.start_date|date:"d. M Y" }}
                     {% else %}
                       —
                     {% endif %}
@@ -70,9 +77,9 @@
                         <h5 class="modal-title fw-bold mb-0">{{ item.title }}</h5>
                         <div class="text-muted small mt-1">
                           {% if item.start_date and item.end_date %}
-                            {{ item.start_date|date:"d.m.Y" }} – {{ item.end_date|date:"d.m.Y" }}
+                            {{ item.start_date|date:"d.m.Y" }} - {{ item.end_date|date:"d.m.Y" }}
                           {% elif item.start_date %}
-                            {{ item.start_date|date:"F Y" }}
+                            {{ item.start_date|date:"d. M Y" }}
                           {% else %}
                             —
                           {% endif %}
@@ -83,7 +90,6 @@
 
                     <div class="modal-body">
                       <div class="container py-3">
-
                         <div class="certificate-frame modal-frame">
                           <img src="{% static item.image %}"
                                alt="{{ item.title }}"
@@ -96,7 +102,6 @@
                             {{ item.description }}
                           </p>
                         {% endif %}
-
                       </div>
                     </div>
 
@@ -111,11 +116,117 @@
 
           {% empty %}
             <div class="text-center text-muted">
-              <p class="mb-0">No certificates added yet.</p>
+              <p class="mb-0">No programming certificates added yet.</p>
             </div>
           {% endfor %}
         </div>
 
+        <!-- =========================
+             Language certificates
+        ========================== -->
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h2 class="h4 fw-bold mb-0">Language certificates</h2>
+        </div>
+
+        <div class="vstack gap-4 mb-5">
+          {% for item in language_certs %}
+            <div class="card border-0 shadow-sm cert-card">
+              <div class="card-body p-4">
+
+                {% if item.image %}
+                  <!-- Clickable certificate image -->
+                  <button type="button"
+                          class="btn p-0 w-100 text-start"
+                          data-bs-toggle="modal"
+                          data-bs-target="#certModal{{ item.id }}"
+                          aria-label="Open certificate {{ item.title }}">
+                    <div class="certificate-frame">
+                      <img src="{% static item.image %}"
+                           alt="{{ item.title }}"
+                           class="img-fluid certificate-img"
+                           style="max-height: 520px; width: 100%; object-fit: contain;">
+                    </div>
+                  </button>
+                {% endif %}
+
+                <!-- Title + date -->
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2 mt-4">
+                  <h3 class="h5 fw-bold mb-0">{{ item.title }}</h3>
+
+                  <span class="badge text-bg-light border align-self-md-start">
+                    {% if item.start_date and item.end_date %}
+                      {{ item.start_date|date:"d.m.Y" }} - {{ item.end_date|date:"d.m.Y" }}
+                    {% elif item.start_date %}
+                      {{ item.start_date|date:"d. M Y" }}
+                    {% else %}
+                      —
+                    {% endif %}
+                  </span>
+                </div>
+
+                {% if item.description %}
+                  <p class="text-muted mb-0 mt-3">
+                    {{ item.description }}
+                  </p>
+                {% endif %}
+
+              </div>
+            </div>
+
+            <!-- Fullscreen Modal -->
+            {% if item.image %}
+              <div class="modal fade" id="certModal{{ item.id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                  <div class="modal-content">
+
+                    <div class="modal-header">
+                      <div>
+                        <h5 class="modal-title fw-bold mb-0">{{ item.title }}</h5>
+                        <div class="text-muted small mt-1">
+                          {% if item.start_date and item.end_date %}
+                            {{ item.start_date|date:"d.m.Y" }} - {{ item.end_date|date:"d.m.Y" }}
+                          {% elif item.start_date %}
+                            {{ item.start_date|date:"d. M Y" }}
+                          {% else %}
+                            —
+                          {% endif %}
+                        </div>
+                      </div>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                      <div class="container py-3">
+                        <div class="certificate-frame modal-frame">
+                          <img src="{% static item.image %}"
+                               alt="{{ item.title }}"
+                               class="img-fluid"
+                               style="width: 100%; height: auto; object-fit: contain;">
+                        </div>
+
+                        {% if item.description %}
+                          <p class="text-muted mt-4 mb-0">
+                            {{ item.description }}
+                          </p>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+
+          {% empty %}
+            <div class="text-center text-muted">
+              <p class="mb-0">No language certificates added yet.</p>
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
 

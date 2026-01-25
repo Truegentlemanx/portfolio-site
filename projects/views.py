@@ -21,7 +21,7 @@ def index(request):
 def resume(request):
     resume_items = (
         ResumeItem.objects
-        .exclude(category__name="Certificates")  
+        .exclude(category__name__in=["Programming certifications", "Language certifications"])  
         .select_related("category")              
         .order_by("category__order", "position", "id") 
     )
@@ -29,13 +29,21 @@ def resume(request):
 
 
 def certificates(request):
-    resume_items = (
+    programming_certs = (
         ResumeItem.objects
-        .filter(category__name="Certificates")   
+        .filter(category__name="Programming certifications")   
         .select_related("category")
-        .order_by("-position", "id")
+        .order_by("position", "id")
     )
-    return render(request, "projects/certificates.html", {"resume_items": resume_items})
+    language_certs = (
+        ResumeItem.objects
+        .filter(category__name="Language certifications")   
+        .select_related("category")
+        .order_by("position", "id")
+    )
+        
+    context = {"programming_certs": programming_certs, "language_certs": language_certs}
+    return render(request, "projects/certificates.html", context)
 
 
 def about_me(request):
