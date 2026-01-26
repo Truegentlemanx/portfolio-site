@@ -17,11 +17,25 @@
         <!-- =========================
              Programming certificates
         ========================== -->
-        <div class="d-flex align-items-center justify-content-between mb-3">
-          <h2 class="h4 fw-bold mb-0">Programming certificates</h2>
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <h2 class="fw-bold fs-3 mb-0">
+            <button
+              class="btn p-0 text-dark border-0 bg-transparent collapse-toggle fs-3"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#programmingCerts"
+              aria-expanded="true"
+              aria-controls="programmingCerts">
+              Programming certificates
+            </button>
+          </h2>
+
+          <span class="section-line"></span>
         </div>
 
-        <div class="vstack gap-4">
+        <div id="programmingCerts" class="collapse show">
+          <div class="vstack gap-4">
+
           {% for item in programming_certs %}
             <div class="card border-0 shadow-sm cert-card">
               <div class="card-body p-4">
@@ -119,16 +133,30 @@
               <p class="mb-0">No programming certificates added yet.</p>
             </div>
           {% endfor %}
+          </div>
         </div>
 
         <!-- =========================
              Language certificates
         ========================== -->
-        <div class="d-flex align-items-center justify-content-between mb-3">
-          <h2 class="h4 fw-bold mb-0">Language certificates</h2>
+        <div class="d-flex align-items-center gap-3 mb-3 mt-5">
+          <h2 class="fw-bold fs-3 mb-0">
+            <button
+              class="btn p-0 text-dark border-0 bg-transparent collapse-toggle fs-3"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#languageCerts"
+              aria-expanded="false"
+              aria-controls="languageCerts">
+              Language certificates
+            </button>
+          </h2>
+
+          <span class="section-line"></span>
         </div>
 
-        <div class="vstack gap-4 mb-5">
+        <div id="languageCerts" class="collapse">
+          <div class="vstack gap-4">
           {% for item in language_certs %}
             <div class="card border-0 shadow-sm cert-card">
               <div class="card-body p-4">
@@ -264,6 +292,21 @@
   /* In fullscreen modal, give it more breathing room */
   .modal-frame {
     box-shadow: 0 1.25rem 3rem rgba(0,0,0,.18);
+  }
+
+  button[data-bs-toggle="collapse"]::after {
+  content: " ▾";
+  font-size: 0.9em;
+  }
+
+  .section-line {
+  flex-grow: 1;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.08)
+  );
   }
 </style>
 {% endblock content %}
