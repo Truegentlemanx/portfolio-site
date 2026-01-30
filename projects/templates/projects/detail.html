@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container my-5">
-
+  
   <!-- Title -->
   <div class="row mb-4">
     <div class="col text-center">
@@ -18,7 +18,7 @@
 
   {% if project.images.all %}
     <div id="detailImagesCarousel"
-         class="carousel slide"
+         class="carousel slide detail-carousel"
          data-bs-ride="carousel"
          data-bs-interval="4000"
          data-bs-wrap="true">
@@ -49,22 +49,6 @@
           </div>
         {% endfor %}
       </div>
-
-      <!-- Controls (lowered a bit) -->
-      <button class="carousel-control-prev" type="button"
-              data-bs-target="#detailImagesCarousel" data-bs-slide="prev"
-              style="top: 92%; transform: translateY(-50%); width: 3rem;">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-
-      <button class="carousel-control-next" type="button"
-              data-bs-target="#detailImagesCarousel" data-bs-slide="next"
-              style="top: 92%; transform: translateY(-50%); width: 3rem;">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-
     </div>
   {% else %}
     <p class="text-muted">No images added yet.</p>
@@ -74,7 +58,7 @@
 
     <!-- Description column -->
     <div class="col-12 col-md-5 offset-md-1">
-      <p class="lead mb-4">{{ project.description }}</p>
+      <p class="lead mb-4 text-justify">{{ project.description }}</p>
 
       {% if project.technology %}
         <p class="text-muted mb-2">
@@ -92,4 +76,15 @@
 
   </div>
 </div>
+
+<style>
+    .detail-carousel .carousel-indicators [data-bs-target] {
+      background-color: #696b68;
+      opacity: 0.55;
+    }
+
+    .detail-carousel .carousel-indicators .active {
+      opacity: 0.95;
+    }
+  </style>
 {% endblock content %}

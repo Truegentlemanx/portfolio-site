@@ -11,14 +11,38 @@
           crossorigin="anonymous">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .nav-link.nav-cta {
+            position: relative;
+            padding: 0.5rem 0.85rem;
+            border-radius: 999px;
+            font-weight: 600;
+            color: #111827;
+            transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+        }
+
+        .nav-link.nav-cta:hover {
+            background-color: #32acfc;
+            color: #111827;
+            transform: translateY(-1px);
+        }
+
+        .nav-link.nav-cta.active {
+            background-color: #111827;
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'projects:all_projects' %}">Portfolio</a>
-        <a class="navbar-brand" href="{% url 'projects:resume' %}">Resume</a>
-        <a class="navbar-brand" href="{% url 'projects:certificates' %}">Certificates</a>
+        <a class="navbar-brand nav-link nav-cta"
+           href="{% url 'projects:all_projects' %}">Portfolio</a>
+        <a class="navbar-brand nav-link nav-cta"
+           href="{% url 'projects:resume' %}">Resume</a>
+        <a class="navbar-brand nav-link nav-cta"
+           href="{% url 'projects:certificates' %}">Certificates</a>
 
         <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse"
@@ -31,10 +55,12 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link"
+                <li class="nav-item me-2">
+                    <a class="nav-link nav-cta"
                        href="{% url 'projects:index' %}">Home</a>
-                    <a class="nav-link"
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-cta"
                        href="{% url 'projects:about_me' %}">About me</a>
                 </li>
             </ul>

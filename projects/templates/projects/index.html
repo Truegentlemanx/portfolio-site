@@ -59,7 +59,7 @@
 
 <!-- PROJECTS PREVIEW (CAROUSEL) -->
 <div id="projectsCarousel" 
-     class="carousel slide" 
+     class="carousel slide projects-carousel" 
      data-bs-ride="carousel" 
      data-bs-interval="3500" 
      data-bs-wrap="true">  
@@ -92,7 +92,7 @@
 
                 <!-- Caption block -->
                 <div class="carousel-caption d-none d-md-block">
-                    <div class="bg-dark bg-opacity-50 rounded-3 px-3 py-2 d-inline-block">
+                    <div class="bg-dark bg-opacity-50 rounded-2 px-3 py-2 d-inline-block">
                         <h5 class="mb-1">{{ project.title }}</h5>
                         <a href="{% url 'projects:project_detail' project.id %}"
                            class="btn btn-primary btn-sm">
@@ -102,22 +102,18 @@
                 </div>
             </div>
         {% endfor %}
-    </div>
-
-    <!-- LOWER CONTROLS -->
-    <button class="carousel-control-prev" type="button"
-            data-bs-target="#projectsCarousel" data-bs-slide="prev"
-            style="transform: translateY(40px);">  <!-- moves arrow down -->
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-
-    <button class="carousel-control-next" type="button"
-            data-bs-target="#projectsCarousel" data-bs-slide="next"
-            style="transform: translateY(40px);">  <!-- moves arrow down -->
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+    </div>    
 </div>
+
+<style>
+    .projects-carousel .carousel-indicators [data-bs-target] {
+        background-color: #696b68;
+        opacity: 0.55;
+    }
+
+    .projects-carousel .carousel-indicators .active {
+        opacity: 0.95;
+    }
+</style>
 
 {% endblock content %}
